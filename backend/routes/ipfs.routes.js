@@ -1,13 +1,10 @@
-// routes/ipfsRoutes.js
 const express = require("express");
 const router = express.Router();
 const IpfsHash = require("../models/ipfsHash.model.js");
 
-// POST route to store a new IPFS hash
 router.post("/", async (req, res) => {
   try {
     const { ipfsHash } = req.body;
-    //validation
     if (!ipfsHash) {
       return res.status(400).json({ error: "IPFS hash is required" });
     }
@@ -22,7 +19,6 @@ router.post("/", async (req, res) => {
   }
 });
 
-// GET route to fetch all IPFS hashes
 router.get("/", async (req, res) => {
   try {
     const hashes = await IpfsHash.find({});

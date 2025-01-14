@@ -12,7 +12,8 @@ app.use("/ipfs", ipfsRouter);
 // Connect to MongoDB
 mongoose
   .connect(
-    "mongodb+srv://test:test@cluster0.mic4h.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0",
+    process.env.MONGODB_URI ||
+      "mongodb+srv://test:test@cluster0.mic4h.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0",
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,
